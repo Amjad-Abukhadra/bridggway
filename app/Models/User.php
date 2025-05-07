@@ -24,10 +24,11 @@ class User extends Authenticatable
         'role',
         'college_id',
         'name',
-    'location',
-    'type',
-    'contact_info',
-    'description',
+        'location',
+        'type',
+        'contact_info',
+        'description',
+        'status'
     ];
 
     /**

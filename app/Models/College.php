@@ -2,16 +2,20 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class College extends Model
+class College extends Authenticatable
 {
     use HasFactory;
 
     protected $fillable = [
         'college_name',
         'uni_name',
+        'name', 'email', 'password', 'status'
     ];
 
     public function supervisors()

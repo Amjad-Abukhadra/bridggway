@@ -34,6 +34,25 @@
         <div class="col-lg-6 bg-white">
           <div class="form d-flex align-items-center">
             <div class="content">
+
+              {{-- Show validation errors --}}
+              @if ($errors->any())
+                <div class="alert alert-danger">
+                  <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+              @endif
+
+              {{-- Show inactive message --}}
+              @if (session('inactive'))
+                <div class="alert alert-warning">
+                  {{ session('inactive') }}
+                </div>
+              @endif
+
               <form method="POST" action="{{ route('login') }}" class="form-validate">
                 @csrf
 
@@ -47,13 +66,24 @@
                   <label for="login-password" class="label-material">Password</label>
                 </div>
 
+                {{-- 🔽 Role selection field --}}
+                <div class="form-group">
+                  <label for="login-type" class="label-material">Login As</label>
+                  <select name="type" id="login-type" class="form-control" required>
+                    <option value="">Select user type</option>
+                    <option value="college">College</option>
+                    <option value="company">Company</option>
+                    <option value="student">Student</option>
+                    <option value="supervisor">Supervisor</option>
+                  </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
 
-                
               </form>
 
               <a href="#" class="forgot-pass">Forgot Password?</a><br>
-              <small>Don't have an account?</small> <a href="#" class="signup">Signup</a> <!-- you can disable this link if not needed -->
+              <small>Don't have an account?</small> <a href="{{ route('register') }}" class="signup">Signup</a>
 
             </div>
           </div>
