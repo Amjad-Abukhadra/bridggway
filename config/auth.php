@@ -13,11 +13,10 @@ return [
     |--------------------------------------------------------------------------
     */
     'guards' => [
-        'web' => [
+        'web' => [ // 👈 ADD THIS BACK
             'driver' => 'session',
-            'provider' => 'users', // default (if you still use it)
+            'provider' => 'users',
         ],
-
         'company' => [
             'driver' => 'session',
             'provider' => 'companies',
@@ -47,9 +46,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class, // you can delete this if you don't use it
+            'model' => App\Models\User::class,
         ],
-
         'companies' => [
             'driver' => 'eloquent',
             'model' => App\Models\Company::class,

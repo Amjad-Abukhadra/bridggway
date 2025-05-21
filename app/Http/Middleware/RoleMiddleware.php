@@ -4,24 +4,25 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+
 class RoleMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string  $guard
+     * @return mixed
      */
-    public function handle($request, Closure $next, ...$guards)
-{
-    foreach ($guards as $guard) {
+    public function handle(Request $request, Closure $next, $guard)
+    {
         if (Auth::guard($guard)->check()) {
             return $next($request);
         }
-    }
 
-    abort(403, 'Unauthorized access.');
+        return redirect()->route('login')->withErrors(['auth' => 'Unauthorized access.']);
+    }
 }
-    
-}
+

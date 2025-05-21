@@ -9,50 +9,41 @@ use Illuminate\Support\Facades\Auth;
 class StudentController extends Controller
 {
     public function profile()
-{
-    $student = Auth::guard('student')->user();
-    return view('student.profile', compact('student'));
-}
-
-public function updateProfile(Request $request)
-{
-    /** @var \App\Models\Student $student */
-    $student = Auth::guard('student')->user();
-
-    if (!$student) {
-        return redirect()->route('login')->withErrors(['auth' => 'Please log in again.']);
+    {
+        $student = Student::with('supervisor')->where('id', Auth::guard('student')->id())->firstOrFail();
+        return view('student.profile', compact('student'));
     }
 
-    $request->validate([
-        'full_name' => 'required|string|max:255',
-        'st_department' => 'required|string|max:255',
-        'gpa' => 'required|numeric|between:0,4.00',
-    ]);
 
-    
-    $data = [
-        'full_name' => $request->full_name,
-        'st_department' => $request->st_department,
-        'gpa' => $request->gpa,
-    ];
+    public function updateProfile(Request $request)
+    {
+        /** @var \App\Models\Student $student */
+        $student = Auth::guard('student')->user();
 
-    
-    $student->update($data);
+        if (!$student) {
+            return redirect()->route('login')->withErrors(['auth' => 'Please log in again.']);
+        }
 
-    return back()->with('success', 'Profile updated successfully!');
-}
-public function internships()
-{
-    return view('student.internships');
-}
-public function applications()
-{
-    // You can fetch applications here, e.g., based on the logged-in student
-    $student = Auth::guard('student')->user();
+        $request->validate([
+            'full_name' => 'required|string|max:255',
+            'st_department' => 'required|string|max:255',
+            'gpa' => 'required|numeric|between:0,4.00',
+        ]);
 
-    // If you have a relationship like: $student->applications
-    $applications = []; // Replace with real data
 
-    return view('student.application', compact('applications'));
-}
+        $data = [
+            'full_name' => $request->full_name,
+            'st_department' => $request->st_department,
+            'gpa' => $request->gpa,
+        ];
+
+
+        $student->update($data);
+
+        return back()->with('success', 'Profile updated successfully!');
+    }
+    public function internships()
+    {
+        return view('student.internships');
+    }
 }

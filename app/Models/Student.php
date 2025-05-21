@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\Supervisor;
 class Student extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -31,7 +31,7 @@ class Student extends Authenticatable
 
     public function supervisor()
     {
-        return $this->belongsTo(Supervisor::class, 'supervisor_id');
+        return $this->belongsTo(Supervisor::class, 'super_id');
     }
 
     public function reports()
@@ -41,6 +41,6 @@ class Student extends Authenticatable
 
     public function internshipOpportunities()
     {
-        return $this->belongsToMany(InternshipOpportunity::class, 'applications', 'student_id', 'internship_id');
+        return $this->belongsToMany(InternshipOpportunity::class, 'applications', 'std_id', 'internship_id');
     }
 }

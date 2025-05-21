@@ -15,6 +15,7 @@ class InternshipOpportunity extends Model
         'start_time',
         'end_time',
         'company_id',
+        'photo'
     ];
 
     public function company()

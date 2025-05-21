@@ -27,9 +27,9 @@
           <div class="info d-flex align-items-center">
             <div class="content">
               <div class="logo">
-                <h1>College Dashboard</h1>
+                <h1>Company Dashboard</h1>
               </div>
-              <p>Register your college admin account to start managing students, companies, and supervisors efficiently.</p>
+              <p>Register your company account to post internships, review student applications, and manage your company profile.</p>
             </div>
           </div>
         </div>

@@ -24,9 +24,9 @@
           <div class="info d-flex align-items-center">
             <div class="content">
               <div class="logo">
-                <h1>College Dashboard</h1>
+                <h1>User Login Dashboard</h1>
               </div>
-              <p>Welcome to our platform where colleges can manage students, companies, and supervisors easily. Start by logging into your admin account.</p>
+              <p>Log in to access your account. Whether you're a College Admin, Student, Supervisor, or Company Representative , manage your tasks efficiently from here.</p>
             </div>
           </div>
         </div>
@@ -66,17 +66,7 @@
                   <label for="login-password" class="label-material">Password</label>
                 </div>
 
-                {{-- 🔽 Role selection field --}}
-                <div class="form-group">
-                  <label for="login-type" class="label-material">Login As</label>
-                  <select name="type" id="login-type" class="form-control" required>
-                    <option value="">Select user type</option>
-                    <option value="college">College</option>
-                    <option value="company">Company</option>
-                    <option value="student">Student</option>
-                    <option value="supervisor">Supervisor</option>
-                  </select>
-                </div>
+                
 
                 <button type="submit" class="btn btn-primary btn-block">Login</button>
 

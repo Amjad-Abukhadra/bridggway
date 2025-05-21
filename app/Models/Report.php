@@ -7,20 +7,37 @@ use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
 {
-    use HasFactory;
     protected $fillable = [
-        'title',
-        'content',
-        'student_id',  // Assuming a report belongs to a student
-        'supervisor_id',  // Assuming a report is linked to a supervisor
+        'student_id',
+        'comp_id',
+        'super_id',
+        'week_number',
+        'task',
+        'tools',
+        'number_of_hours',
+        'performance_level',
+        'responsibility',
+        'punctuality',
+        'accuracy_in_work',
+        'teamwork',
+        'adaptability',
+        'skill_acquisition_speed',
+        'overall_completion'
     ];
+
+    // Relationships
     public function student()
     {
-        return $this->belongsTo(Student::class, 'student_id');
+        return $this->belongsTo(Student::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'comp_id');
     }
 
     public function supervisor()
     {
-        return $this->belongsTo(Supervisor::class, 'supervisor_id');
+        return $this->belongsTo(Supervisor::class, 'super_id');
     }
 }
