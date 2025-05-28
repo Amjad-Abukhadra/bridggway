@@ -73,6 +73,11 @@
                     <i class="fas fa-tachometer-alt"></i> Dashboard
                 </a>
             </li>
+            <li class="{{ request()->routeIs('supervisor.profile') ? 'active' : '' }}">
+                <a href="{{ route('supervisor.profile') }}">
+                    <i class="fas fa-user-circle"></i> Profile
+                </a>
+            </li>
             <li class="{{ request()->routeIs('supervisor.students') ? 'active' : '' }}">
                 <a href="{{ route('supervisor.students') }}">
                     <i class="fas fa-users"></i> Students

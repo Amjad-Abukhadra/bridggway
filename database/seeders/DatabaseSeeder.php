@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             CollegeSeeder::class,
+            CompanySeeder::class,
         ]);
         
         // \App\Models\User::factory(10)->create();

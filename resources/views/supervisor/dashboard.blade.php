@@ -94,6 +94,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3 mb-3">
+                                <a href="{{ route('supervisor.profile') }}" class="btn btn-block btn-outline-info">
+                                    <i class="fas fa-user-tie mr-2"></i>View Profile
+                                </a>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
                                 <a href="{{ route('supervisor.students') }}" class="btn btn-block btn-outline-primary">
                                     <i class="fas fa-users mr-2"></i>View Students
                                 </a>
@@ -104,7 +110,6 @@
                                     <i class="fas fa-file-alt mr-2"></i>Review Applications
                                 </a>
                             </div>
-
                         </div>
                     </div>
                 </div>

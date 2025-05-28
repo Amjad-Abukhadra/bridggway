@@ -8,6 +8,7 @@ use App\Models\Report;
 use App\Models\Application;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class SupervisorController extends Controller
 {
@@ -154,5 +155,36 @@ class SupervisorController extends Controller
             ->first();
         
         return view('supervisor.student-evaluation', compact('student', 'evaluation'));
+    }
+
+    public function profile()
+    {
+        $supervisor = Auth::guard('supervisor')->user();
+        
+        if (!$supervisor) {
+            return redirect()->route('login')->withErrors(['auth' => 'Please login as supervisor.']);
+        }
+        
+        return view('supervisor.profile', compact('supervisor'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $validated = $request->validate([
+            'full_name' => 'required|string|max:255',
+            'department' => 'required|string|max:255',
+        ]);
+
+        $supervisor = Auth::guard('supervisor')->user();
+        
+        // Use query builder to update
+        DB::table('supervisors')
+            ->where('id', $supervisor->id)
+            ->update([
+                'full_name' => $validated['full_name'],
+                'super_department' => $validated['department']
+            ]);
+
+        return back()->with('success', 'Profile updated successfully');
     }
 }

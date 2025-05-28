@@ -73,6 +73,10 @@ Route::middleware(['role:supervisor'])->group(function () {
     // Evaluations
     Route::get('/supervisor/evaluations', [SupervisorController::class, 'evaluations'])->name('supervisor.evaluations');
     Route::get('/supervisor/evaluations/{student}', [SupervisorController::class, 'studentEvaluation'])->name('supervisor.student.evaluation');
+    
+    // Profile
+    Route::get('/supervisor/profile', [SupervisorController::class, 'profile'])->name('supervisor.profile');
+    Route::post('/supervisor/profile', [SupervisorController::class, 'updateProfile'])->name('supervisor.profile.update');
 });
 // student routes
 Route::middleware(['role:student'])->group(function () {

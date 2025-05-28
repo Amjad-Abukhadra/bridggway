@@ -19,20 +19,15 @@
         }
 
         .internship-image-container {
-            position: relative;
-            padding-top: 56.25%;
             /* 16:9 Aspect Ratio */
             overflow: hidden;
             background-color: #f8f9fa;
         }
 
         .internship-image {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-
+            height: auto;
+            object-fit: cover;
             object-position: center;
         }
 
@@ -117,7 +112,7 @@
                     <div class="card internship-card shadow-sm rounded-4">
                         @if ($internship->photo)
                             <div class="internship-image-container rounded-top-4">
-                                <img src="{{ asset('storage/' . $internship->photo) }}" class="internship-image"
+                                <img src="{{ asset('storage/internship_photos/' . $internship->photo) }}" class="internship-image"
                                     alt="Internship Image">
                             </div>
                         @endif

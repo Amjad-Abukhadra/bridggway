@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Supervisor;
+
 class Student extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -21,8 +22,8 @@ class Student extends Authenticatable
         'supervisor_id',
         'resume',
         'email',
-    'password',
-    'status',
+        'password',
+        'status',
     ];
     public function college()
     {

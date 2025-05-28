@@ -37,20 +37,13 @@
                     </div>
                 </a>
 
-                
+
 
                 <!-- Sidebar Toggle Btn-->
                 <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
             </div>
-            <div class="right-menu list-inline no-margin-bottom">
-                <div class="status online"></div>
-            </div>
-            <div class="status away"></div>
-        </div>
-        <div class="status busy"></div>
-        </div>
 
-        <div class="status offline"></div>
+
 
 
 
