@@ -112,7 +112,7 @@
                     <div class="card internship-card shadow-sm rounded-4">
                         @if ($internship->photo)
                             <div class="internship-image-container rounded-top-4">
-                                <img src="{{ asset('storage/internship_photos/' . $internship->photo) }}" class="internship-image"
+                                <img src="{{ asset('storage/' . $internship->photo) }}" class="internship-image"
                                     alt="Internship Image">
                             </div>
                         @endif
